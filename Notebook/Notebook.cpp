@@ -155,11 +155,10 @@ void Notebook::loadFromFile() {
     }
 }
 
-// Утилиты
 void Notebook::printAll() const {
     cout << "\n=== All Notes (" << notes.size() << ") ===" << endl;
-    for (int i = 0; i < notes.size(); i++) {
-        cout << "[" << i << "] " << notes[i].getTitle()
+    for (size_t i = 0; i < notes.size(); i++) {
+        cout << "[" << i + 1 << "] " << notes[i].getTitle()
             << " by " << notes[i].getAuthor() << endl;
     }
 }
@@ -180,12 +179,20 @@ void Notebook::printNotes(const vector<int>& indices) const {
 void Notebook::runTestScenarios() {
     cout << "\n=== Running Test Scenarios ===" << endl;
 
-    // Сохраняем текущие заметки
-    vector<Note> backup = notes;
+    // 1. Сохраняем текущие данные перед тестами
+    cout << "1. Saving current data to file..." << endl;
+    try {
+        saveToFile();
+        cout << "   + SAVE: " << notes.size() << " notes saved to file" << endl;
+    }
+    catch (const exception& e) {
+        cout << "   * SAVE FAILED: " << e.what() << endl;
+    }
+
+    // 2. Очищаем и заполняем тестовыми данными
+    cout << "\n2. Creating test notes..." << endl;
     notes.clear();
 
-    // 1. Создаем тестовые записи
-    cout << "1. Creating test notes..." << endl;
     notes.push_back(Note("Kate", "Shopping List", "Milk, Eggs, Bread"));
     notes.back().setTags({ "shopping", "home" });
 
@@ -195,38 +202,61 @@ void Notebook::runTestScenarios() {
     notes.push_back(Note("Kate", "Book Ideas", "Write a novel about programming"));
     notes.back().setTags({ "personal", "ideas" });
 
-    // 2. Поиск по автору
-    cout << "2. Searching by author 'Kate': ";
-    auto aliceNotes = findByAuthor("Kate");
-    cout << aliceNotes.size() << " notes found" << endl;
+    // 3. ТЕСТЫ ПОИСКА
+    cout << "\n3. Testing search functions..." << endl;
 
-    // 3. Поиск по тегу
-    cout << "3. Searching by tag 'work': ";
-    auto workNotes = findByTag("work");
-    cout << workNotes.size() << " notes found" << endl;
+    // 3.1 Поиск по автору
+    cout << "   Search by author 'Kate': ";
+    auto res1 = findByAuthor("Kate");
+    cout << res1.size() << " found (expected: 2)" << endl;
 
-    // 4. Поиск по слову
-    cout << "4. Searching by word 'project': ";
-    auto projectNotes = findByWord("project");
-    cout << projectNotes.size() << " notes found" << endl;
+    // 3.2 Поиск по тегу
+    cout << "   Search by tag 'work': ";
+    auto res2 = findByTag("work");
+    cout << res2.size() << " found (expected: 1)" << endl;
 
-    // 5. Статистика
-    cout << "5. Statistics:" << endl;
-    auto authorStats = getAuthorStats();
-    for (const auto& pair : authorStats) {
-        cout << "   " << pair.first << ": " << pair.second << " notes" << endl;
+    // 3.3 Поиск по слову
+    cout << "   Search by word 'project': ";
+    auto res3 = findByWord("project");
+    cout << res3.size() << " found (expected: 1)" << endl;
+
+    // 3.4 Поиск по дате
+    cout << "   Search by date (today): ";
+    string today = notes[0].getCreatedAt();
+    auto res4 = findByDate(today);
+    cout << res4.size() << " found (expected: 3)" << endl;
+
+    // 4. ТЕСТЫ СТАТИСТИКИ
+    cout << "\n4. Testing statistics..." << endl;
+
+    // 4.1 Статистика по авторам
+    cout << "   Author statistics:" << endl;
+    auto authStats = getAuthorStats();
+    for (auto& p : authStats) {
+        cout << "     " << p.first << ": " << p.second << " notes" << endl;
+    }
+    cout << "     Expected: Kate:2, Bob:1" << endl;
+
+    // 4.2 Статистика по тегам
+    cout << "   Tag statistics:" << endl;
+    auto tagStats = getTagStats();
+    for (auto& p : tagStats) {
+        cout << "     #" << p.first << ": " << p.second << " times" << endl;
+    }
+    cout << "     Expected: shopping:1, home:1, work:1, meeting:1, personal:1, ideas:1" << endl;
+
+    // 5. ТЕСТ ЗАГРУЗКИ ИЗ ФАЙЛА
+    cout << "\n5. Testing file load..." << endl;
+    notes.clear();
+    try {
+        loadFromFile();
+        cout << "   + LOAD: " << notes.size() << " notes loaded from file" << endl;
+    }
+    catch (const exception& e) {
+        cout << "   * LOAD FAILED: " << e.what() << endl;
     }
 
-    // 6. Сохранение/загрузка
-    cout << "6. Testing save/load..." << endl;
-    saveToFile();
-    notes.clear();
-    loadFromFile();
-    cout << "   Loaded " << notes.size() << " notes" << endl;
-
-    // Восстанавливаем оригинальные данные
-    notes = backup;
-    cout << "\n=== Test Scenarios Completed ===" << endl;
+    cout << "\n=== All Tests Completed ===" << endl;
 }
 
 // Вспомогательные методы
