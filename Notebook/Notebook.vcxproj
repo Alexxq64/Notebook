@@ -132,6 +132,7 @@
     <ClInclude Include="ConsoleUI.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="Notebook.h" />
+    <ClInclude Include="Storable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
