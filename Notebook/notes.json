@@ -1,57 +1,53 @@
-{
-  "notes": [
-    {
-      "author": "aaa",
-      "content": "aaa fff sss",
-      "createdAt": "2025-10-03",
-      "tags": [
-        "hobby"
-      ],
-      "title": "zzz",
-      "updatedAt": "2025-12-11"
-    },
-    {
-      "author": "Kate",
-      "content": "Milk, Eggs, Bread",
-      "createdAt": "2025-11-28",
-      "tags": [
-        "shopping",
-        "home"
-      ],
-      "title": "Shopping List",
-      "updatedAt": "2025-11-29"
-    },
-    {
-      "author": "Bob",
-      "content": "Discuss project timeline",
-      "createdAt": "2025-12-01",
-      "tags": [
-        "work",
-        "meeting"
-      ],
-      "title": "Meeting Notes",
-      "updatedAt": "2025-12-03"
-    },
-    {
-      "author": "Kate",
-      "content": "Write a novel about programming",
-      "createdAt": "2025-12-05",
-      "tags": [
-        "personal",
-        "ideas"
-      ],
-      "title": "Book Ideas",
-      "updatedAt": "2025-12-06"
-    },
-    {
-      "author": "John",
-      "content": "Fix my comp",
-      "createdAt": "2025-12-11",
-      "tags": [
-        "urgent"
-      ],
-      "title": "Repair",
-      "updatedAt": "2025-12-11"
-    }
-  ]
-}
+=== NOTE 1 ===
+AUTHOR: котов
+TITLE: проба1
+CONTENT: неизвестно
+TAGS: дом
+CREATED: 1769788998
+UPDATED: 1769893755
+=== END ===
+
+=== NOTE 2 ===
+AUTHOR: ежов
+TITLE: про ежа
+CONTENT: колючие ежи
+TAGS: все
+CREATED: 1769889174
+UPDATED: 1769893624
+=== END ===
+
+=== NOTE 3 ===
+AUTHOR: я
+TITLE: бред
+CONTENT: всякая ерунда
+TAGS: тест,все
+CREATED: 1769889242
+UPDATED: 1769891679
+=== END ===
+
+=== NOTE 4 ===
+AUTHOR: я
+TITLE: чушь
+CONTENT: абракадабра
+TAGS: бред
+CREATED: 1769889292
+UPDATED: 1769889292
+=== END ===
+
+=== NOTE 5 ===
+AUTHOR: я
+TITLE: тест2
+CONTENT: раз два три
+TAGS: тест
+CREATED: 1769891590
+UPDATED: 1769891590
+=== END ===
+
+=== NOTE 6 ===
+AUTHOR: кот
+TITLE: про кота
+CONTENT: коты
+CREATED: 1769891750
+UPDATED: 1769891750
+=== END ===
+

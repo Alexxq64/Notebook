@@ -51,8 +51,8 @@ private:
     // Обработка запуска тестовых сценариев
     void handleTestScenarios();
 
-    // Обработка демонстрации полиморфизма
-    void handlePolymorphismDemo();
+    //// Обработка демонстрации полиморфизма
+    //void handlePolymorphismDemo();
 
     // ========== ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ==========
 

@@ -124,12 +124,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleUI.cpp" />
+    <ClCompile Include="EncodingUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="Notebook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleUI.h" />
+    <ClInclude Include="EncodingUtils.h" />
     <ClInclude Include="Note.h" />
     <ClInclude Include="Notebook.h" />
     <ClInclude Include="Storable.h" />
